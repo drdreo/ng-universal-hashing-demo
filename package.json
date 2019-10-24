@@ -1,0 +1,72 @@
+{
+  "name": "ng-universal-hashing-demo",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start:site1": "ng serve --project='ng-site1-demo' --configuration=dev",
+    "start:site2": "ng serve --project='ng-site2-demo' --configuration=dev",
+    "build": "ng build",
+    "lint": "ng lint ng-site1-demo",
+    "build:site1:client-and-server-bundles": "npm run build:site1:language-bundles && ng run ng-site1-demo:server:production",
+    "build:site2:client-and-server-bundles": "npm run build:site2:language-bundles && ng run ng-site1-demo:server:production",
+    "build:ssr": "npm run build:site1:client-and-server-bundles && npm run build:site2:client-and-server-bundles && npm run compile:server",
+    "compile:server": "tsc -p server.tsconfig.json",
+    "generate:prerender": "cd dist && node prerender",
+    "serve:prerender": "cd dist/browser && http-server",
+    "serve:ssr": "node dist/server",
+    "build:site1:language-bundles": "ng run ng-site1-demo:build:production-it && ng run ng-site1-demo:build:production-en && ng run ng-site1-demo:build:production-fr",
+    "build:site2:language-bundles": "ng run ng-site2-demo:build:production-it && ng run ng-site2-demo:build:production-en && ng run ng-site2-demo:build:production-fr",
+    "extract-i18n": "ng xi18n --output-path locale && node ./node_modules/ngx-i18nsupport/dist/xliffmerge/xliffmerge"
+  },
+  "pre-commit": [],
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "8.2.12",
+    "@angular/common": "8.2.12",
+    "@angular/compiler": "8.2.12",
+    "@angular/core": "8.2.12",
+    "@angular/forms": "8.2.12",
+    "@angular/platform-browser": "8.2.12",
+    "@angular/platform-browser-dynamic": "8.2.12",
+    "@angular/platform-server": "8.2.12",
+    "@angular/router": "8.2.12",
+    "@nguniversal/common": "^8.1.1",
+    "@nguniversal/express-engine": "^8.1.1",
+    "@nguniversal/module-map-ngfactory-loader": "^8.1.1",
+    "core-js": "^2.4.1",
+    "express": "^4.15.2",
+    "ngx-i18nsupport": "^0.17.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "6.5.3",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.14",
+    "@angular/cli": "8.3.14",
+    "@angular/compiler-cli": "8.2.12",
+    "@angular/language-service": "8.2.12",
+    "@types/node": "^8.0.30",
+    "codelyzer": "^5.0.1",
+    "http-server": "^0.10.0",
+    "pre-commit": "^1.2.2",
+    "ts-loader": "^4.2.0",
+    "tslint": "^5.7.0",
+    "typescript": "3.5.3"
+  },
+  "xliffmergeOptions": {
+    "srcDir": "src/locale",
+    "genDir": "src/locale",
+    "i18nFile": "messages.xlf",
+    "i18nBaseFile": "messages",
+    "i18nFormat": "xlf",
+    "encoding": "UTF-8",
+    "defaultLanguage": "it",
+    "languages": [
+      "it",
+      "en",
+      "fr"
+    ],
+    "verbose": true
+  }
+}
