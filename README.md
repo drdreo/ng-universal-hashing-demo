@@ -5,7 +5,10 @@ This is a fork from: https://github.com/mzuccaroli/universal-multisite-multilang
 This repo demonstrates the use of Angular Universal Server-side Rendering applied to a multilanguage and multisite application
 Starting from a simple application codebase it automatically generates two parallel sites with differents assets and contens
 and translated version of them using i18n and xliffmerge.
-The express server is configured to serve each site in a different port (4000 and 4001)
+The express server is configured to serve each site in a different port (4002 and 4001)
+
+The different usage of images are handled differently in universal. Images in templates are hashed and used only by the client app, the server has no access to this hashed images and doesn't find them. Only when the client app takes over, the images are rendered.
+Disabling hashing makes it possible for the server to access the correct image.
 
 ### This project is based on Angular Universal Starter
 
