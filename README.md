@@ -1,4 +1,6 @@
-# Angular Universal Multisite Multilanguage Starter
+This is a fork from: https://github.com/mzuccaroli/universal-multisite-multilanguage
+
+# Angular Universal Multisite Multilanguage Bug replication
 
 This repo demonstrates the use of Angular Universal Server-side Rendering applied to a multilanguage and multisite application
 Starting from a simple application codebase it automatically generates two parallel sites with differents assets and contens
@@ -38,17 +40,15 @@ This repo demonstrates the use of Server-side Rendering.
 
 ### Production (also for testing SSR/Pre-rendering locally)
 **`npm run build:ssr && npm run serve:ssr`** - Compiles your application and spins up a Node Express to serve your Universal application:
-* the site 1 wil be served on `http://localhost:4000`
+* the site 1 wil be served on `http://localhost:4002`
 * the site 2 wil be served on `http://localhost:4001`
 
 ### Languages and translations
 **`npm run extract-i18n`** - extract all the i18n ready to translate strings and put its into to messages.xlf files located in  `src/locale`
 After a succesfull production build language specific static versions of the application will be placed in `dist/site1/en`  `dist/site1/it` ecc..
-The site 1 translated application will be served on :  `http://localhost:4000/en` `http://localhost:4000/it` `http://localhost:4000/fr`
+The site 1 translated application will be served on :  `http://localhost:4002/en` `http://localhost:4002/it` `http://localhost:4002/fr`
 The site 2 translated application will be served on :  `http://localhost:4001/en` `http://localhost:4001/it` `http://localhost:4001/fr`
 
-
-**Note**: To deploy your static site to a static hosting platform you will have to deploy the `dist/site1` or `dist/site2` folder, rather than the usual `dist`
 
 
 # License
